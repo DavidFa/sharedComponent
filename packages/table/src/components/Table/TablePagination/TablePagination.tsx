@@ -23,6 +23,7 @@ padding-right: 30px;
 
 const Select = styled.select`
 margin: 0 50px 0 10px;
+padding: 3px 6px;
 `;
 
 const Option = styled.option`
@@ -41,10 +42,11 @@ const Label = styled.label`
 const TablePagination: React.FC<TablePaginationType> = (props) => {
     const [lastPage, setLastPage] = useState<number>(100);
     useEffect(() => {
+        // console.log(props.page);
         let pageSize = Math.floor(props.count / props.rowsPerPage);
         pageSize += props.count % props.rowsPerPage > 0 ? 1 : 0;
         setLastPage(pageSize);
-    }, [props]);
+    }, [props.count, props.rowsPerPage]);
 
     return (
         <TableFoot>

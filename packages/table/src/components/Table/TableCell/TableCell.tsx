@@ -8,6 +8,7 @@ type TableCellType = {
     borderBottom?: boolean;
     colSpan?: number;
     textAlign?: string;
+    sortable?: boolean;
 }
 
 interface CellAttrProps {
@@ -42,8 +43,8 @@ const Cell = styled.td.attrs<CellAttrProps>(props => ({
 
 
 const TableCell: React.FC<TableCellType> = (props) => {
-
-    return <Cell {...props}>{props.children}</Cell>
+    const { children, ...rest } = props;
+    return <Cell {...rest}>{props.children}</Cell>
 }
 
 export default TableCell;

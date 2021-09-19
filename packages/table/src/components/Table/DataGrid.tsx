@@ -8,26 +8,15 @@ import TableCell from './TableCell/TableCell';
 import TableBody from './TableBody/TableBody';
 import TablePagination from "./TablePagination/TablePagination"
 import { useReducer, useEffect, useState } from 'react';
+import { DataGridColumns, DataGridRows } from '../../models/Types';
 
 
-type DataGridColumns = {
-    field: string;
-    headerName: string;
-    width: number;
-    align?: string;
-}
-
-type DataGridRows = {
-    [key: string]: string | number
-}
-
-type DataGridType = {
+type DataGridProps = {
     width: number;
     rows: DataGridRows[];
     columns: DataGridColumns[];
-    rowsPerPage: number;
+    rowsPerPage?: number;
     rowsPerPageOptions: number[];
-
 }
 
 const DataGridDiv = styled.div<{ width: number }>`
@@ -71,7 +60,15 @@ const DataGridDiv = styled.div<{ width: number }>`
 //     }
 // }
 
-const DataGrid: React.FC<DataGridType> = (props) => {
+const DataGrid: React.FC<DataGridProps> = (props) => {
+
+    // const DataGrid: React.FC<DataGridType> = ({ width,
+    //     rows,
+    //     columns,
+    //     rowsPerPage,
+    //     rowsPerPageOptions }) => {
+
+
     // const [paginationState, dispatchPagination] = useReducer(paginationReducer, paginationInitState);
 
     // useEffect(() => {
@@ -82,12 +79,13 @@ const DataGrid: React.FC<DataGridType> = (props) => {
     //     dispatchPagination({ type: ActionType.pageChange, page: page })
     // }
 
-    const [page, setPage] = useState<number>(1);
-    const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+    const defaultPage = 1;
+    const [page, setPage] = useState<number>(defaultPage);
+    const [rowsPerPage, setRowsPerPage] = useState<number>(props.rowsPerPage || 5);
 
-    useEffect(() => {
-        setRowsPerPage(props.rowsPerPage);
-    }, [])
+    // useEffect(() => {
+    //     setRowsPerPage(props.rowsPerPage);
+    // }, [])
 
     const onPageChangeHandler = (page: number) => {
         setPage(page);
@@ -103,27 +101,27 @@ const DataGrid: React.FC<DataGridType> = (props) => {
             <Table>
                 <TableHead>
                     <TableRow>
+                        {/* Check if column is empty */}
                         {props.columns.map(column => {
-                            return <TableCell key={column.field} width={column.width} textAlign={column.align} borderBottom={true}>{column.headerName}</TableCell>
+                            return <TableCell key={column.field} width={column.width} textAlign={column.align} borderBottom={true} sortable={column.sortable}>{column.headerName}</TableCell>
                         })}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.rows.length === 0 ?
+                    {props.rows.length ?
                         <TableRow>
                             <TableCell borderBottom={true} colSpan={props.columns.length} textAlign={"center"}>Data is empty!</TableCell>
                         </TableRow>
                         : props.rows.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((row, index) => {
                             return (
-                                <TableRow key={index}>
-                                    {props.columns.map(column => {
-                                        return <TableCell borderBottom={true} textAlign={column.align}>{row[column.field]}</TableCell>
+                                <TableRow key={`TableRow_${index}`}>
+                                    {props.columns.map((column, i) => {
+                                        return <TableCell key={`TableCell_${i}`} borderBottom={true} textAlign={column.align}>{row[column.field]}</TableCell>
                                     })}
                                 </TableRow>
                             )
                         })}
                 </TableBody>
-
                 <TablePagination
                     colSpan={props.columns.length}
                     count={props.rows.length}
@@ -133,7 +131,6 @@ const DataGrid: React.FC<DataGridType> = (props) => {
                     onPageChangeHandler={onPageChangeHandler}
                     onRowsPerPageChangeHandler={onRowsPerPageChangeHandler}
                 />
-
             </Table>
         </TableContrainer>
     </DataGridDiv>
