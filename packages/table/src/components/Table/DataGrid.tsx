@@ -108,7 +108,7 @@ const DataGrid: React.FC<DataGridProps> = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.rows.length ?
+                    {props.rows.length === 0?
                         <TableRow>
                             <TableCell borderBottom={true} colSpan={props.columns.length} textAlign={"center"}>Data is empty!</TableCell>
                         </TableRow>
