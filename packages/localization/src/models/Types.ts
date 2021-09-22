@@ -16,18 +16,18 @@ export type InputFormWithLanguageProps = {
     length: number;
 }
 
-export interface LocalizationState {
+export interface LanguageState {
     language: string;
     languages: string[];
 }
 
-export enum LocalizationActionType {
+export enum LanguageActionType {
     updateLanguage,
     populateLanguages
 }
 
-export type LocalizationAction = {
-    type: LocalizationActionType;
+export type LanguageAction = {
+    type: LanguageActionType;
     payload: {
         language?: string;
         languages?: string[];

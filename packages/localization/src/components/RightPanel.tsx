@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import InputFormWithLanguage from "./InputFormWithLanguage";
-import { LocalizationState } from "../models/Types";
+import { LanguageState } from "../models/Types";
 
 const Panel = styled.div`
 margin: 10px;
@@ -30,7 +30,7 @@ margin: 20px 0 0 0;
 
 const RightPanel: React.FC = () => {
 
-    const languages = useSelector((state: LocalizationState) => state?.languages);
+    const languages = useSelector((state: LanguageState) => state?.languages);
 
     let inputs = languages?.map((item: string, index: number) => {
         return <InputFormWithLanguage key={`${item}_${index}`} language={item.toUpperCase()} placeholder={item.toUpperCase()} length={20} />

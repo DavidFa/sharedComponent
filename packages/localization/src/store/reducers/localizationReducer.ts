@@ -1,19 +1,19 @@
 import { createStore } from "redux";
-import { LocalizationAction, LocalizationActionType, LocalizationState } from "../../models/Types";
+import { LanguageAction, LanguageActionType, LanguageState } from "../../models/Types";
 
-const initialSate: LocalizationState = {
+const initialSate: LanguageState = {
     language: "",
     languages: []
 }
 
-const localizationReducer = (state: LocalizationState = initialSate, action: LocalizationAction): LocalizationState => {
+const languageReducer = (state: LanguageState = initialSate, action: LanguageAction): LanguageState => {
     switch (action.type) {
-        case LocalizationActionType.updateLanguage: {
+        case LanguageActionType.updateLanguage: {
             // copy old array
             const languages = state.languages.slice();
             return { languages, language: action.payload.language! };
         }
-        case LocalizationActionType.populateLanguages: {
+        case LanguageActionType.populateLanguages: {
             const { language } = state;
             return { language, languages: action.payload.languages! };
         }
@@ -21,6 +21,6 @@ const localizationReducer = (state: LocalizationState = initialSate, action: Loc
     }
 }
 
-const store = createStore(localizationReducer);
+const store = createStore(languageReducer);
 
 export default store;

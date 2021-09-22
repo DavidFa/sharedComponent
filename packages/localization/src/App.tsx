@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch } from 'react-redux';
-import { LocalizationActionType } from "./models/Types";
+import { LanguageActionType } from "./models/Types";
 
 const getBroswerLanguage = () => {
   return navigator.language || "";
@@ -16,8 +16,8 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: LocalizationActionType.updateLanguage, payload: { language: getBroswerLanguage() } });
-    dispatch({ type: LocalizationActionType.populateLanguages, payload: { languages: getBroswerLanguages() } });
+    dispatch({ type: LanguageActionType.updateLanguage, payload: { language: getBroswerLanguage() } });
+    dispatch({ type: LanguageActionType.populateLanguages, payload: { languages: getBroswerLanguages() } });
   }, [dispatch]);
 
   return (
