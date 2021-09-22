@@ -5,7 +5,7 @@ const initialSate: LanguageState = {
     languages: []
 }
 
-const languageReducer = (state: LanguageState = initialSate, action: LanguageAction): LanguageState => {console.log(action, state);
+const languageReducer = (state: LanguageState = initialSate, action: LanguageAction): LanguageState => {
     switch (action.type) {
         case ActionType.updateLanguage: {
             // copy old array

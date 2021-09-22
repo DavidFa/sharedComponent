@@ -3,7 +3,7 @@ import styled from "styled-components";
 import InputForm from "./InputForm";
 import { FIELD_NAME, FIELD_DESC } from '../models/Constants';
 import { useAppSelector } from "../hooks/hooks";
-import { isShowFlyoutAction, updateName } from '../store/actions';
+import { showFlyoutAction, updateName, updateDesc } from '../store/actions';
 import { useDispatch } from "react-redux";
 
 const Panel = styled.div`
@@ -30,21 +30,33 @@ text-align:right;
 const LeftPanel: React.FC = () => {
     const language = useAppSelector(state => state.language.language);
 
+    const localization = useAppSelector(state => state.localization);
+
     const dispatch = useDispatch();
 
     const onShowFlyoutHandler = (field: string) => {
-        dispatch(isShowFlyoutAction(true, field));
+        dispatch(showFlyoutAction(field));
     }
 
-    const onChangeFieldHandler = (event: React.ChangeEvent<HTMLInputElement>) => {console.log('fdddddddddddddddddddddddddddddddddddd');
+    const onChangeFieldHandler = (field: string, event: React.ChangeEvent<HTMLInputElement>) => {
+
         const val = event.target.value;
-        dispatch(updateName(val, language));
+        switch (field) {
+            case FIELD_NAME: {
+                dispatch(updateName(val, language));
+                break;
+            }
+            case FIELD_DESC: {
+                dispatch(updateDesc(val, language));
+                break;
+            }
+        }
     }
 
     return <Panel>
         <Form >
-            <InputForm label={FIELD_NAME} placeholder={FIELD_NAME} length={20} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
-            <InputForm label={FIELD_DESC} placeholder={FIELD_DESC} length={50} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
+            <InputForm label={FIELD_NAME} placeholder={FIELD_NAME} length={20} value={localization.name.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
+            <InputForm label={FIELD_DESC} placeholder={FIELD_DESC} length={50} value={localization.description.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
             <Wrapper><Button>Save</Button></Wrapper>
         </Form>
     </Panel>

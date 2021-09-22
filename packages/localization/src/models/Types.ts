@@ -10,8 +10,9 @@ export type InputFormProps = {
     label: string;
     placeholder: string;
     length: number;
+    value: string;
     showFlyoutHandler: (field: string) => void;
-    changeField: (evetn: React.ChangeEvent<HTMLInputElement>) => void;
+    changeField: (field: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type InputFormWithLanguageProps = {
@@ -19,6 +20,7 @@ export type InputFormWithLanguageProps = {
     placeholder: string;
     length: number;
     value: string;
+    changeField: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface LanguageState {
@@ -29,8 +31,11 @@ export interface LanguageState {
 export enum ActionType {
     updateLanguage,
     populateLanguages,
-    isShowFlyout,
+    showFlyout,
+    dissFlyout,
     updateName,
+    updateFlyoutName,
+    updateDesc,
 }
 
 export type LanguageAction = {
@@ -59,7 +64,6 @@ export interface LocalizationState {
 export type LocalizationAction = {
     type: ActionType;
     payload: {
-        isShowFlyout?: boolean;
         flyOutField?: string;
         local?: string;
         field?: string;
