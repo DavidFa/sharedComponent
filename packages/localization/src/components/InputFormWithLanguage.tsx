@@ -19,8 +19,8 @@ const Input = styled.input`
 padding: 5px 20px;
 `;
 
-const InputFormWithLanguage: React.FC<InputFormWithLanguageProps> = ({ language, placeholder, length }) => {
-    return <Wrapper><Input placeholder={placeholder} maxLength={length} /><Label>{language}</Label></Wrapper>
+const InputFormWithLanguage: React.FC<InputFormWithLanguageProps> = ({ language, placeholder, length, value }) => {
+    return <Wrapper><Input placeholder={placeholder} maxLength={length} value={value} /><Label>{language}</Label></Wrapper>
 }
 
 export default InputFormWithLanguage;

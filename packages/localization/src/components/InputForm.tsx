@@ -22,8 +22,9 @@ const Input = styled.input`
 padding: 5px 20px;
 `;
 
-const InputForm: React.FC<InputFormProps> = ({ label, placeholder, length }) => {
-    return <Wrapper><Label>{label}:</Label><Input placeholder={placeholder} maxLength={length} /><Button>+</Button></Wrapper>
+const InputForm: React.FC<InputFormProps> = ({ label, placeholder, length, showFlyoutHandler, changeField }) => {
+
+    return <Wrapper><Label>{label}:</Label><Input placeholder={placeholder} maxLength={length} onChange={(e) => changeField(e)} /><Button onClick={() => showFlyoutHandler(label)}>+</Button></Wrapper>
 }
 
 export default InputForm;

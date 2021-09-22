@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import Layout from "./components/Layout";
 import { useDispatch } from 'react-redux';
-import { LanguageActionType } from "./models/Types";
+import { updateLanguage, populateLanguages } from "./store/actions";
 
-const getBroswerLanguage = () => {
+const getBroswerLanguage = (): string => {
   return navigator.language || "";
 }
 
-const getBroswerLanguages = () => {
+const getBroswerLanguages = (): readonly string[] => {
   return navigator.languages;
 }
 
@@ -16,8 +16,8 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: LanguageActionType.updateLanguage, payload: { language: getBroswerLanguage() } });
-    dispatch({ type: LanguageActionType.populateLanguages, payload: { languages: getBroswerLanguages() } });
+    dispatch(updateLanguage(getBroswerLanguage()));
+    dispatch(populateLanguages(getBroswerLanguages()));
   }, [dispatch]);
 
   return (
