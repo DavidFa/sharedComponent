@@ -21,6 +21,9 @@ padding: 5px 20px;
 
 const InputFormWithLanguage: React.FC<InputFormWithLanguageProps> = ({ language, placeholder, length, value, changeField }) => {
     return <Wrapper><Input placeholder={placeholder} maxLength={length} value={value} onChange={e => changeField(language, e)} /><Label>{language}</Label></Wrapper>
-}
+};
+// const InputFormWithLanguage: React.FC<InputFormWithLanguageProps> = React.memo(({ language, placeholder, length, value, changeField }) => {
+//     return <Wrapper><Input placeholder={placeholder} maxLength={length} value={value} onChange={e => changeField(language, e)} /><Label>{language}</Label></Wrapper>
+// }, (prevProps, nextProps) => prevProps.value === nextProps.value);
 
 export default InputFormWithLanguage;

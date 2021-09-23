@@ -12,7 +12,7 @@ color: ${props => props.color}
 
 const Message: React.FC = () => {
     const message = useAppSelector(state => state.message);
-    let color = message.status === Status.fail ? 'red' : message.status === Status.success ? "green" : "";
+    const color = message.status === Status.fail ? 'red' : message.status === Status.success ? "green" : "";
 
     return <Wrapper color={color}>{message.message}</Wrapper>;
 }

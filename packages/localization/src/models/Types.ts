@@ -97,3 +97,7 @@ export type MessageAction = {
     }
 }
 
+export type KeyValuePair<T> = {
+    [key: string]: T;
+}
+

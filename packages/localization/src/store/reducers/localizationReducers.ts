@@ -28,7 +28,8 @@ const localizationReducer = (state: LocalizationState = initialSate, action: Loc
             return { name: newName, description: newDesc, isShowFlyout: true, flyOutField: action.payload.flyOutField! }
         }
         case ActionType.dissFlyout: {
-            const localLanguage = action.payload.local!;
+            const localLanguage = action.payload.local;
+            if (!localLanguage) return state;
             const { name, description } = state;
             const newNameLocalization = { ...name.localization };
             const newName = { ...name, localization: newNameLocalization };
@@ -40,6 +41,7 @@ const localizationReducer = (state: LocalizationState = initialSate, action: Loc
         }
         case ActionType.updateName: {
             const localLanguage = action.payload.local!;
+            if (!localLanguage) return state;
             const field = action.payload.field!;
             const { isShowFlyout, flyOutField, name, description } = state;
             const newNameLocalization = { ...name.localization };

@@ -1,6 +1,6 @@
 import { AnyAction } from "redux"
 import { ThunkAction } from "redux-thunk"
-import { ActionType } from "../../models/Types"
+import { ActionType, KeyValuePair } from "../../models/Types"
 import { RootState } from "../reducers"
 
 export const showFlyoutAction = (flyOutField: string) => {
@@ -36,8 +36,8 @@ export const updateFlyoutDesc = (field: string) => {
 }
 
 export const syncDataToFirebase = (paylod: {
-    name: { [key: string]: string },
-    description: { [key: string]: string }
+    name: KeyValuePair<string>,
+    description: KeyValuePair<string>
 }): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async dispatch => {
         dispatch({ type: ActionType.loadingStart });
@@ -47,7 +47,6 @@ export const syncDataToFirebase = (paylod: {
             const sendRequest = async () => {
                 const res = await fetch("https://react-demo-17d32-default-rtdb.asia-southeast1.firebasedatabase.app/localization.json", { method: "PUT", body: JSON.stringify(paylod) });
                 if (!res.ok) {
-                    console.log("not ok")
                     throw new Error("Something wrong here!");
                 }
             }
