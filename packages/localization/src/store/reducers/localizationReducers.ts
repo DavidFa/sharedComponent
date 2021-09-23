@@ -19,7 +19,8 @@ const initialSate: LocalizationState = {
 const localizationReducer = (state: LocalizationState = initialSate, action: LocalizationAction): LocalizationState => {
     switch (action.type) {
         case ActionType.showFlyout: {
-            const { name, description } = state;
+            const { name, description, isShowFlyout } = state;
+            if (isShowFlyout) return state;
             const newNameLocalization = { ...name.localization };
             const newName = { ...name, localization: newNameLocalization };
             const newDescLocalization = { ...description.localization };
@@ -31,10 +32,10 @@ const localizationReducer = (state: LocalizationState = initialSate, action: Loc
             const { name, description } = state;
             const newNameLocalization = { ...name.localization };
             const newName = { ...name, localization: newNameLocalization };
-            newName.tem = newNameLocalization[localLanguage];
+            newName.tem = newNameLocalization[localLanguage] || "";
             const newDescLocalization = { ...description.localization };
             const newDesc = { ...description, localization: newDescLocalization };
-            newDesc.tem = newDescLocalization[localLanguage];
+            newDesc.tem = newDescLocalization[localLanguage] || "";
             return { name: newName, description: newDesc, isShowFlyout: false, flyOutField: "" }
         }
         case ActionType.updateName: {
@@ -59,6 +60,17 @@ const localizationReducer = (state: LocalizationState = initialSate, action: Loc
             const newDesc = { ...description, localization: newDescLocalization };
             return { isShowFlyout, flyOutField, name: newName, description: newDesc }
         }
+        case ActionType.updateNameSet: {
+            const localLanguage = action.payload.local!;
+            const localization = action.payload.localization!;
+            const { name, description } = state;
+            const newNameLocalization = { ...name.localization, ...localization };
+            newNameLocalization[localLanguage] = name.tem;
+            const newName = { ...name, localization: newNameLocalization };
+            const newDescLocalization = { ...description.localization };
+            const newDesc = { ...description, localization: newDescLocalization };
+            return { isShowFlyout: false, flyOutField: "", name: newName, description: newDesc }
+        }
         case ActionType.updateDesc: {
             const localLanguage = action.payload.local!;
             const field = action.payload.field!;
@@ -70,6 +82,27 @@ const localizationReducer = (state: LocalizationState = initialSate, action: Loc
             const newDesc = { ...description, localization: newDescLocalization };
             newDesc.tem = field;
             return { isShowFlyout, flyOutField, name: newName, description: newDesc }
+        }
+        case ActionType.updateFlyoutDesc: {
+            const field = action.payload.field!;
+            const { isShowFlyout, flyOutField, name, description } = state;
+            const newNameLocalization = { ...name.localization };
+            const newName = { ...name, localization: newNameLocalization };
+            const newDescLocalization = { ...description.localization };
+            const newDesc = { ...description, localization: newDescLocalization };
+            newDesc.tem = field;
+            return { isShowFlyout, flyOutField, name: newName, description: newDesc }
+        }
+        case ActionType.updateDescSet: {
+            const localLanguage = action.payload.local!;
+            const localization = action.payload.localization!;
+            const { name, description } = state;
+            const newNameLocalization = { ...name.localization };
+            const newName = { ...name, localization: newNameLocalization };
+            const newDescLocalization = { ...description.localization, ...localization };
+            newDescLocalization[localLanguage] = description.tem;
+            const newDesc = { ...description, localization: newDescLocalization };
+            return { isShowFlyout: false, flyOutField: "", name: newName, description: newDesc }
         }
     }
     return state;

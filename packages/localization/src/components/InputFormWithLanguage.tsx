@@ -20,7 +20,7 @@ padding: 5px 20px;
 `;
 
 const InputFormWithLanguage: React.FC<InputFormWithLanguageProps> = ({ language, placeholder, length, value, changeField }) => {
-    return <Wrapper><Input placeholder={placeholder} maxLength={length} value={value} onChange={e => changeField(e)} /><Label>{language}</Label></Wrapper>
+    return <Wrapper><Input placeholder={placeholder} maxLength={length} value={value} onChange={e => changeField(language, e)} /><Label>{language}</Label></Wrapper>
 }
 
 export default InputFormWithLanguage;

@@ -20,7 +20,7 @@ export type InputFormWithLanguageProps = {
     placeholder: string;
     length: number;
     value: string;
-    changeField: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    changeField: (lang: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface LanguageState {
@@ -35,7 +35,10 @@ export enum ActionType {
     dissFlyout,
     updateName,
     updateFlyoutName,
+    updateNameSet,
     updateDesc,
+    updateFlyoutDesc,
+    updateDescSet
 }
 
 export type LanguageAction = {
@@ -67,5 +70,6 @@ export type LocalizationAction = {
         flyOutField?: string;
         local?: string;
         field?: string;
+        localization?: { [key: string]: string }
     }
 }
