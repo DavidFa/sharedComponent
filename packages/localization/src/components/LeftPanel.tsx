@@ -6,6 +6,7 @@ import { useAppSelector } from "../hooks/hooks";
 import { showFlyoutAction, updateName, updateDesc, syncDataToFirebase } from '../store/actions';
 import { useDispatch } from "react-redux";
 import Message from "./Message";
+import Loading from "./Loading";
 
 const Panel = styled.div`
 margin: 10px;
@@ -64,6 +65,7 @@ const LeftPanel: React.FC = () => {
 
     return <Panel>
         <Message />
+        <Loading />
         <Form onSubmit={onSubmitHandler}>
             <InputForm label={FIELD_NAME} placeholder={FIELD_NAME} length={20} value={localization.name.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
             <InputForm label={FIELD_DESC} placeholder={FIELD_DESC} length={50} value={localization.description.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />

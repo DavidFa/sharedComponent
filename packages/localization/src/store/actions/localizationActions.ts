@@ -43,21 +43,21 @@ export const syncDataToFirebase = (paylod: {
         dispatch({ type: ActionType.loadingStart });
 
         // this is set for loading
-        await setTimeout(() => { }, 1000);
-
-        const sendRequest = async () => {
-            const res = await fetch("https://react-demo-17d32-default-rtdb.asia-southeast1.firebasedatabase.app/localization.json", { method: "PUT", body: JSON.stringify(paylod) });
-            if (!res.ok) {
-                console.log("not ok")
-                throw new Error("Something wrong here!");
+        setTimeout(async () => {
+            const sendRequest = async () => {
+                const res = await fetch("https://react-demo-17d32-default-rtdb.asia-southeast1.firebasedatabase.app/localization.json", { method: "PUT", body: JSON.stringify(paylod) });
+                if (!res.ok) {
+                    console.log("not ok")
+                    throw new Error("Something wrong here!");
+                }
             }
-        }
-        try {
-            await sendRequest();
-            dispatch({ type: ActionType.loadingSuccess, payload: { message: "Finished!" } });
-        } catch (err) {
-            dispatch({ type: ActionType.loadingFail, payload: { message: "Something wrong here!" } });
+            try {
+                await sendRequest();
+                dispatch({ type: ActionType.loadingSuccess, payload: { message: "Finished!" } });
+            } catch (err) {
+                dispatch({ type: ActionType.loadingFail, payload: { message: "Something wrong here!" } });
 
-        }
+            }
+        }, 1000);
     };
 }
