@@ -1,4 +1,7 @@
+import { AnyAction } from "redux"
+import { ThunkAction } from "redux-thunk"
 import { ActionType } from "../../models/Types"
+import { RootState } from "../reducers"
 
 export const showFlyoutAction = (flyOutField: string) => {
     return { type: ActionType.showFlyout, payload: { flyOutField } }
@@ -30,4 +33,31 @@ export const updateDescSet = (localization: { [key: string]: string }, local: st
 
 export const updateFlyoutDesc = (field: string) => {
     return { type: ActionType.updateFlyoutDesc, payload: { field } }
+}
+
+export const syncDataToFirebase = (paylod: {
+    name: { [key: string]: string },
+    description: { [key: string]: string }
+}): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async dispatch => {
+        dispatch({ type: ActionType.loadingStart });
+
+        // this is set for loading
+        await setTimeout(() => { }, 1000);
+
+        const sendRequest = async () => {
+            const res = await fetch("https://react-demo-17d32-default-rtdb.asia-southeast1.firebasedatabase.app/localization.json", { method: "PUT", body: JSON.stringify(paylod) });
+            if (!res.ok) {
+                console.log("not ok")
+                throw new Error("Something wrong here!");
+            }
+        }
+        try {
+            await sendRequest();
+            dispatch({ type: ActionType.loadingSuccess, payload: { message: "Finished!" } });
+        } catch (err) {
+            dispatch({ type: ActionType.loadingFail, payload: { message: "Something wrong here!" } });
+
+        }
+    };
 }

@@ -38,7 +38,10 @@ export enum ActionType {
     updateNameSet,
     updateDesc,
     updateFlyoutDesc,
-    updateDescSet
+    updateDescSet,
+    loadingStart,
+    loadingSuccess,
+    loadingFail
 }
 
 export type LanguageAction = {
@@ -73,3 +76,24 @@ export type LocalizationAction = {
         localization?: { [key: string]: string }
     }
 }
+
+
+export interface MessageState {
+    loading: boolean;
+    status: Status;
+    message: string;
+}
+
+export enum Status {
+    init,
+    success,
+    fail
+}
+
+export type MessageAction = {
+    type: ActionType;
+    payload: {
+        message?: string;
+    }
+}
+

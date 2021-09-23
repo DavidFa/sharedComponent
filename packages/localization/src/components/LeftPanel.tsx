@@ -3,8 +3,9 @@ import styled from "styled-components";
 import InputForm from "./InputForm";
 import { FIELD_NAME, FIELD_DESC } from '../models/Constants';
 import { useAppSelector } from "../hooks/hooks";
-import { showFlyoutAction, updateName, updateDesc } from '../store/actions';
+import { showFlyoutAction, updateName, updateDesc, syncDataToFirebase } from '../store/actions';
 import { useDispatch } from "react-redux";
+import Message from "./Message";
 
 const Panel = styled.div`
 margin: 10px;
@@ -17,9 +18,8 @@ border-radius: 6px;
 const Form = styled.form`
 `;
 
-const Button = styled.button.attrs({ type: "button" })`
+const Button = styled.button`
 padding: 5px 10px;
-
 `;
 
 const Wrapper = styled.div`
@@ -53,8 +53,18 @@ const LeftPanel: React.FC = () => {
         }
     }
 
+    const onSubmitHandler = (event: React.FormEvent) => {
+        event.preventDefault();
+        const paylod = {
+            name: localization.name.localization,
+            description: localization.description.localization
+        }
+        dispatch(syncDataToFirebase(paylod));
+    }
+
     return <Panel>
-        <Form >
+        <Message />
+        <Form onSubmit={onSubmitHandler}>
             <InputForm label={FIELD_NAME} placeholder={FIELD_NAME} length={20} value={localization.name.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
             <InputForm label={FIELD_DESC} placeholder={FIELD_DESC} length={50} value={localization.description.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
             <Wrapper><Button>Save</Button></Wrapper>
