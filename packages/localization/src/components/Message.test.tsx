@@ -11,8 +11,9 @@ describe('React-Redux Message Component', () => {
     let store;
     let component: renderer.ReactTestRenderer;
 
-    beforeEach(() => {
-        store = mockStore({
+
+    test('should render with given init status state from Redux store', () => {
+        const store = mockStore({
             message: {
                 loading: false,
                 status: Status.init,
@@ -22,24 +23,15 @@ describe('React-Redux Message Component', () => {
 
         store.dispatch = jest.fn();
 
-        component = renderer.create(
+        const component = renderer.create(
             <Provider store={store}>
                 <Message />
             </Provider>
         );
-    });
-
-    test('should render with given init status state from Redux store', () => {
         expect(component.toJSON()).toMatchSnapshot();
     });
-})
 
-
-describe('React-Redux Message Component', () => {
-    let store;
-    let component: renderer.ReactTestRenderer;
-
-    beforeEach(() => {
+    test('should render with given success status state from Redux store', () => {
         store = mockStore({
             message: {
                 loading: false,
@@ -55,18 +47,10 @@ describe('React-Redux Message Component', () => {
                 <Message />
             </Provider>
         );
-    });
-
-    test('should render with given success status state from Redux store', () => {
         expect(component.toJSON()).toMatchSnapshot();
     });
-})
 
-describe('React-Redux Message Component', () => {
-    let store;
-    let component: renderer.ReactTestRenderer;
-
-    beforeEach(() => {
+    test('should render with given fail status state from Redux store', () => {
         store = mockStore({
             message: {
                 loading: false,
@@ -82,10 +66,6 @@ describe('React-Redux Message Component', () => {
                 <Message />
             </Provider>
         );
-    });
-
-    test('should render with given fail status state from Redux store', () => {
         expect(component.toJSON()).toMatchSnapshot();
     });
 })
-

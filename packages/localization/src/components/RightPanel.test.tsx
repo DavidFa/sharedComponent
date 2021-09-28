@@ -12,8 +12,6 @@ const mockStore = configureStore([]);
 
 describe('RightPanel', () => {
 
-    let component: renderer.ReactTestRenderer;
-
     // Snapshot
     it('should render with given state from Redux store', () => {
         const store: Store<any, AnyAction> = mockStore({
@@ -36,7 +34,7 @@ describe('RightPanel', () => {
                 }
             },
         });
-        component = renderer.create(
+        const component: renderer.ReactTestRenderer = renderer.create(
             <Provider store={store}>
                 <RightPanel />
             </Provider>

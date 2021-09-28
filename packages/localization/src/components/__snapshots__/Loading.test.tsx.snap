@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Component should render with given state from Redux State 1`] = `
+<div
+  className="sc-bdfBQB gvSErf"
+>
+  <div
+    className="loading"
+  >
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`Loading Component should render without Loading 1`] = `
+<div
+  className="sc-bdfBQB gvSErf"
+/>
+`;
