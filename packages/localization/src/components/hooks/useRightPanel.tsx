@@ -5,14 +5,14 @@ import { FIELD_DESC, FIELD_NAME } from "../../models/Constants";
 import { dissFlyoutAction, updateDescSet, updateFlyoutDesc, updateFlyoutName, updateNameSet } from "../../store/actions";
 import InputFormWithLanguage from "../InputFormWithLanguage";
 
-export const useRightPanel = () => {
+const useRightPanel = () => {
     const [fieldSet, setFieldSet] = useState<{ [key: string]: string }>({});
     const dispatch = useDispatch();
     // const language = useAppSelector(state => state.language.language);
     // const languages = useAppSelector(state => state.language.languages);
-    const { language, languages } = useAppSelector(state => state.language);
+    const { language: { language, languages }, localization } = useAppSelector(state => state);
     // const flyOutField = useAppSelector(state => state.localization.flyOutField);
-    const localization = useAppSelector(state => state.localization);
+    // const localization = useAppSelector(state => state.localization);
     const { flyOutField, name, description } = localization;
 
     const field = useMemo(() => {
@@ -90,5 +90,7 @@ export const useRightPanel = () => {
         return <InputFormWithLanguage key={`${item}_${index}`} language={item} placeholder={item} length={field.length} value={value} changeField={onChangeFieldHandler} />
     });
 
-    return { flyOutField, inputs, dissFlyoutHandler, onSubmit }
+    return { flyOutField, inputs, dissFlyoutHandler, onChangeFieldHandler, onSubmit, fieldSet, language, languages, name, description, field }
 }
+
+export default useRightPanel;

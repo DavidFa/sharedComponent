@@ -117,3 +117,17 @@ npm i --save-dev @types/styled-components
 npx sb init
 
 npm run storybook  
+
+
+# Install Jest
+npm install --save-dev jest
+
+# Install @testing-library/react-hooks
+npm install --save-dev @testing-library/react-hooks
+
+# Install react-test-renderer
+npm install --save-dev react-test-renderer
+
+# Install redux-mock-store to test React-Redux connected Components
+npm install --save-dev redux-mock-store 
+npm install --save-dev @types/redux-mock-store

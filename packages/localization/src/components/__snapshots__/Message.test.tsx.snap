@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React-Redux Message Component should render with given fail status state from Redux store 1`] = `
+<div
+  className="sc-bdfBQB bUlqGe"
+  color="red"
+>
+  success
+</div>
+`;
+
+exports[`React-Redux Message Component should render with given init status state from Redux store 1`] = `
+<div
+  className="sc-bdfBQB WFNB"
+  color=""
+>
+  
+</div>
+`;
+
+exports[`React-Redux Message Component should render with given success status state from Redux store 1`] = `
+<div
+  className="sc-bdfBQB cKljzO"
+  color="green"
+>
+  success
+</div>
+`;

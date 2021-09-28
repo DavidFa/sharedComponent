@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useRightPanel } from "./hooks/useRightPanel";
+import useRightPanel from "./hooks/useRightPanel";
 
 const Panel = styled.div`
 margin: 10px;
@@ -41,9 +41,12 @@ const RightPanel: React.FC = () => {
 
     return <Panel>
         <Form>
-            <H4>{flyOutField}</H4>
+            <H4 role="h4">{flyOutField}</H4>
             {inputs}
-            <Wrapper><Button onClick={dissFlyoutHandler}>Cancel</Button><Button onClick={onSubmit}>Save</Button></Wrapper>
+            <Wrapper>
+                <Button data-testid="cancelBtn" onClick={dissFlyoutHandler}>Cancel</Button>
+                <Button data-testid="saveBtn" onClick={onSubmit}>Save</Button>
+            </Wrapper>
         </Form>
     </Panel>
 }

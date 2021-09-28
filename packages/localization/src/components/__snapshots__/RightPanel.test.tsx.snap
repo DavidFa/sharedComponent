@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RightPanel should render with given state from Redux store 1`] = `
+<div
+  className="sc-hKgJUU hZjYMl"
+>
+  <form
+    className="sc-eCstlR eIMPPg"
+  >
+    <h4
+      className="sc-gKseQn"
+      role="h4"
+    >
+      Name
+    </h4>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <input
+        className="sc-dlfnuX idJtJP"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="en-AU"
+        value=""
+      />
+      <label
+        className="sc-gsTEea cCGvIt"
+      >
+        en-AU
+      </label>
+    </div>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <input
+        className="sc-dlfnuX idJtJP"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="en-US"
+        value=""
+      />
+      <label
+        className="sc-gsTEea cCGvIt"
+      >
+        en-US
+      </label>
+    </div>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <input
+        className="sc-dlfnuX idJtJP"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="en"
+        value=""
+      />
+      <label
+        className="sc-gsTEea cCGvIt"
+      >
+        en
+      </label>
+    </div>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <input
+        className="sc-dlfnuX idJtJP"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="en-UK"
+        value=""
+      />
+      <label
+        className="sc-gsTEea cCGvIt"
+      >
+        en-UK
+      </label>
+    </div>
+    <div
+      className="sc-iBPTik htTLnT"
+    >
+      <button
+        className="sc-jSgvzq iPcuja"
+        data-testid="cancelBtn"
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </button>
+      <button
+        className="sc-jSgvzq iPcuja"
+        data-testid="saveBtn"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+`;
