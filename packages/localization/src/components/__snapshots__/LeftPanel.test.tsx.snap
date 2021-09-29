@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeftPanel should render with loading 1`] = `
+<div
+  className="sc-gKseQn fpshPN"
+>
+  <div
+    className="sc-eCstlR cItJND"
+    color=""
+  >
+    
+  </div>
+  <div
+    className="sc-jSgvzq kQrgyl"
+  >
+    <div
+      className="loading"
+    >
+      Loading...
+    </div>
+  </div>
+  <form
+    className="sc-iBPTik bURNyi"
+    data-testid="leftPanelForm"
+    onSubmit={[Function]}
+  >
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <label
+        className="sc-gsTEea fAFGmn"
+      >
+        Name
+        :
+      </label>
+      <input
+        className="sc-hKgJUU kdxHsE"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="Name"
+        value=""
+      />
+      <button
+        className="sc-dlfnuX gmFgaw"
+        onClick={[Function]}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <label
+        className="sc-gsTEea fAFGmn"
+      >
+        Description
+        :
+      </label>
+      <input
+        className="sc-hKgJUU kdxHsE"
+        maxLength={50}
+        onChange={[Function]}
+        placeholder="Description"
+        value=""
+      />
+      <button
+        className="sc-dlfnuX gmFgaw"
+        onClick={[Function]}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="sc-pGacB eMoSMC"
+    >
+      <button
+        className="sc-fubCzh gKcJWl"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`LeftPanel should render with message 1`] = `
+<div
+  className="sc-gKseQn fpshPN"
+>
+  <div
+    className="sc-eCstlR isDrck"
+    color="green"
+  >
+    success
+  </div>
+  <div
+    className="sc-jSgvzq kQrgyl"
+  />
+  <form
+    className="sc-iBPTik bURNyi"
+    data-testid="leftPanelForm"
+    onSubmit={[Function]}
+  >
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <label
+        className="sc-gsTEea fAFGmn"
+      >
+        Name
+        :
+      </label>
+      <input
+        className="sc-hKgJUU kdxHsE"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="Name"
+        value=""
+      />
+      <button
+        className="sc-dlfnuX gmFgaw"
+        onClick={[Function]}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <label
+        className="sc-gsTEea fAFGmn"
+      >
+        Description
+        :
+      </label>
+      <input
+        className="sc-hKgJUU kdxHsE"
+        maxLength={50}
+        onChange={[Function]}
+        placeholder="Description"
+        value=""
+      />
+      <button
+        className="sc-dlfnuX gmFgaw"
+        onClick={[Function]}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="sc-pGacB eMoSMC"
+    >
+      <button
+        className="sc-fubCzh gKcJWl"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`LeftPanel should render without message and loading 1`] = `
+<div
+  className="sc-gKseQn fpshPN"
+>
+  <div
+    className="sc-eCstlR cItJND"
+    color=""
+  >
+    
+  </div>
+  <div
+    className="sc-jSgvzq kQrgyl"
+  />
+  <form
+    className="sc-iBPTik bURNyi"
+    data-testid="leftPanelForm"
+    onSubmit={[Function]}
+  >
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <label
+        className="sc-gsTEea fAFGmn"
+      >
+        Name
+        :
+      </label>
+      <input
+        className="sc-hKgJUU kdxHsE"
+        maxLength={20}
+        onChange={[Function]}
+        placeholder="Name"
+        value=""
+      />
+      <button
+        className="sc-dlfnuX gmFgaw"
+        onClick={[Function]}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="sc-bdfBQB cAMYHB"
+    >
+      <label
+        className="sc-gsTEea fAFGmn"
+      >
+        Description
+        :
+      </label>
+      <input
+        className="sc-hKgJUU kdxHsE"
+        maxLength={50}
+        onChange={[Function]}
+        placeholder="Description"
+        value=""
+      />
+      <button
+        className="sc-dlfnuX gmFgaw"
+        onClick={[Function]}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="sc-pGacB eMoSMC"
+    >
+      <button
+        className="sc-fubCzh gKcJWl"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import InputForm from "./InputForm";
 import { FIELD_NAME, FIELD_DESC } from '../models/Constants';
-import { useAppSelector } from "../hooks/hooks";
-import { showFlyoutAction, updateName, updateDesc, syncDataToFirebase } from '../store/actions';
-import { useDispatch } from "react-redux";
+
 import Message from "./Message";
 import Loading from "./Loading";
+import useLeftPanel from "./hooks/useLeftPanel";
 
 const Panel = styled.div`
 margin: 10px;
@@ -29,44 +28,13 @@ text-align:right;
 
 
 const LeftPanel: React.FC = () => {
-    const language = useAppSelector(state => state.language.language);
 
-    const localization = useAppSelector(state => state.localization);
-
-    const dispatch = useDispatch();
-
-    const onShowFlyoutHandler = (field: string) => {
-        dispatch(showFlyoutAction(field));
-    }
-
-    const onChangeFieldHandler = (field: string, event: React.ChangeEvent<HTMLInputElement>) => {
-
-        const val = event.target.value;
-        switch (field) {
-            case FIELD_NAME: {
-                dispatch(updateName(val, language));
-                break;
-            }
-            case FIELD_DESC: {
-                dispatch(updateDesc(val, language));
-                break;
-            }
-        }
-    }
-
-    const onSubmitHandler = (event: React.FormEvent) => {
-        event.preventDefault();
-        const paylod = {
-            name: localization.name.localization,
-            description: localization.description.localization
-        }
-        dispatch(syncDataToFirebase(paylod));
-    }
+    const { localization, onShowFlyoutHandler, onChangeFieldHandler, onSubmitHandler } = useLeftPanel();
 
     return <Panel>
         <Message />
         <Loading />
-        <Form onSubmit={onSubmitHandler}>
+        <Form data-testid="leftPanelForm" onSubmit={onSubmitHandler}>
             <InputForm label={FIELD_NAME} placeholder={FIELD_NAME} length={20} value={localization.name.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
             <InputForm label={FIELD_DESC} placeholder={FIELD_DESC} length={50} value={localization.description.tem} showFlyoutHandler={onShowFlyoutHandler} changeField={onChangeFieldHandler} />
             <Wrapper><Button>Save</Button></Wrapper>

@@ -3,7 +3,6 @@ import useRightPanel from "./useRightPanel";
 import * as ReactRedux from 'react-redux';
 import * as useReduxState from "../../hooks/hooks";
 import { ActionType } from "../../models/Types";
-import { cleanup } from "@testing-library/react";
 
 describe('useRightPanel', () => {
 
