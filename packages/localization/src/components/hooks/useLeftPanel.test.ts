@@ -92,6 +92,7 @@ describe('useLeftPanel', () => {
         expect(mockUseDispatch).toBeCalledWith({ "payload": { "field": "test desc", local: "en-AU" }, "type": ActionType.updateDesc });
     })
 
+
     // it('should dispatch an action to when onSubmitHandler is fired', () => {
     //     const { result } = renderHook(() => useLeftPanel());
 
