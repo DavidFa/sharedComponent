@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { PostStatus } from '../../models/Types';
 import { actions, editPost } from '../../store/postsReducer';
 
 const Wrapper = styled.div`
@@ -56,13 +57,17 @@ const Post = () => {
         }
     }
 
+    const onCancelHandler = () => {
+        dispatch(actions.updateStatus(PostStatus.list));
+    }
+
     return (
         <Wrapper>
             <Form onSubmit={onSubmitHandler}>
                 <InputGroup><h3>Edit Post</h3></InputGroup>
-                <InputGroup><Label>Title</Label><Input value={post?.title} onChange={onTitleChangeHandler} /></InputGroup>
-                <InputGroup><Label>Body</Label><Input value={post?.body} onChange={onBodyhangeHandler} /></InputGroup>
-                <InputGroup><Button>Save</Button></InputGroup>
+                <InputGroup><Label>Title</Label><Input value={post.title} onChange={onTitleChangeHandler} /></InputGroup>
+                <InputGroup><Label>Body</Label><Input value={post.body} onChange={onBodyhangeHandler} /></InputGroup>
+                <InputGroup><Button type="button" onClick={onCancelHandler}>Cancel</Button><Button>Save</Button></InputGroup>
             </Form>
         </Wrapper>
     )

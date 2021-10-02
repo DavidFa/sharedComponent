@@ -4,7 +4,8 @@ import { PostStatus, PostType } from "../models/Types";;
 interface StateType {
     status: PostStatus;
     posts: PostType[];
-    post: PostType | null;
+    post: PostType;
+    comparedPosts: PostType[];
 }
 
 interface MyKnownError {
@@ -14,7 +15,8 @@ interface MyKnownError {
 const initialState: StateType = {
     status: PostStatus.list,
     posts: [],
-    post: null
+    post: { id: 0, title: "", body: "" },
+    comparedPosts: []
 };
 
 export const fetchPosts = createAsyncThunk<PostType, number>('posts/getPosts',
@@ -47,7 +49,6 @@ export const editPost = createAsyncThunk<PostType, PostType>('posts/editPost',
             return rejectWithValue({ errorMessage: "error" } as MyKnownError)
         }
         const data = (await response.json()) as PostType;
-        dispatch(fetchPosts(10));
         dispatch(actions.updateStatus(PostStatus.list));
         return data;
     })
@@ -60,7 +61,6 @@ export const addPost = createAsyncThunk<PostType, { title: string, body: string 
             return rejectWithValue({ errorMessage: "error" } as MyKnownError)
         }
         const data = (await response.json()) as PostType;
-        dispatch(fetchPosts(10));
         dispatch(actions.updateStatus(PostStatus.list));
         return data;
     })
@@ -79,6 +79,14 @@ const postSlice = createSlice({
         editBody: (state, { payload }) => {
             if (!state.post) return state;
             state.post.body = payload;
+        },
+        addComparedPost: (state, { payload }) => {
+            state.comparedPosts.push(payload);
+        },
+        removeComparedPost: (state, { payload }) => {
+            if (!state.comparedPosts.length) return;
+            const comparedPosts = state.comparedPosts.filter(item => item.id !== payload);
+            state.comparedPosts = comparedPosts;
         }
     },
 
@@ -103,7 +111,7 @@ const postSlice = createSlice({
 
         },
         [editPost.fulfilled.type]: (state, { payload }) => {
-            state.post = null
+            state.post = { id: 0, title: "", body: "" }
         },
         [editPost.rejected.type]: (state, { payload }) => {
         },

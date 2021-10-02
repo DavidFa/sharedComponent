@@ -12,10 +12,18 @@ display: table-cell;
 vertical-align: inherit;
 `;
 
-const TableCell: React.FC = (props) => {
+const CheckBox = styled.input``
+
+type TableCellType = {
+    selectable?: boolean;
+    postId?: number;
+    onSelectedHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const TableCell: React.FC<TableCellType> = ({ selectable = false, postId, onSelectedHandler, children }) => {
 
     return (
-        <Td>{props.children}</Td>
+        <Td>{selectable ? <CheckBox type="checkbox" value={postId} onChange={onSelectedHandler} /> : children}</Td>
     )
 }
 
