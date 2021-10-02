@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Snapshot Test should render with 3 td 1`] = `
+<thead
+  className="sc-hKgJUU BiQOs"
+>
+  <tr
+    className="sc-dlfnuX bsBZvW"
+  >
+    <td
+      className="sc-bdfBQB bjKVnb"
+      role="cell"
+    >
+      id
+    </td>
+    <td
+      className="sc-bdfBQB bjKVnb"
+      role="cell"
+    >
+      title
+    </td>
+    <td
+      className="sc-bdfBQB bjKVnb"
+      role="cell"
+    >
+      action
+    </td>
+  </tr>
+</thead>
+`;
+
+exports[`Header Snapshot Test should render without  td 1`] = `
+<thead
+  className="sc-hKgJUU BiQOs"
+/>
+`;

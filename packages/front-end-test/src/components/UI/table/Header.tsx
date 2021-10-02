@@ -15,7 +15,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ headers }) => {
 
-    const fields = headers.length && <Row>{headers.map((item, index) => {
+    const fields = !!headers.length && <Row>{headers.map((item, index) => {
         return <TableCell key={`${item}_${index}`}>{item}</TableCell>
     })}</Row>;
 

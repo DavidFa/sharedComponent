@@ -125,8 +125,8 @@ npm install --save-dev jest
 # Install @testing-library/react-hooks
 npm install --save-dev @testing-library/react-hooks
 
-<!-- # Install react-test-renderer
-npm install --save-dev react-test-renderer -->
+# Install react-test-renderer
+npm install --save-dev react-test-renderer
 
 # Install redux-mock-store to test React-Redux connected Components
 npm install --save-dev redux-mock-store 

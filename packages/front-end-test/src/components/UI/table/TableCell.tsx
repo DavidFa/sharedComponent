@@ -23,7 +23,7 @@ type TableCellType = {
 const TableCell: React.FC<TableCellType> = ({ selectable = false, postId, onSelectedHandler, children }) => {
 
     return (
-        <Td>{selectable ? <CheckBox type="checkbox" value={postId} onChange={onSelectedHandler} /> : children}</Td>
+        <Td role='cell'>{selectable ? <CheckBox type="checkbox" value={postId} onChange={onSelectedHandler} /> : children}</Td>
     )
 }
 

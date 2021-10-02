@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableCell Snapshot Test should render with checkbox 1`] = `
+<td
+  className="sc-bdfBQB bjKVnb"
+  role="cell"
+>
+  <input
+    className="sc-gsTEea"
+    type="checkbox"
+    value={1}
+  />
+</td>
+`;
+
+exports[`TableCell Snapshot Test should render without checkbox 1`] = `
+<td
+  className="sc-bdfBQB bjKVnb"
+  role="cell"
+>
+  Table Cell Data
+</td>
+`;
