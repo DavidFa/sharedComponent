@@ -34,10 +34,10 @@ const AddPost = () => {
 
     return (
         <Wrapper>
-            <Form onSubmit={onSubmitHandler}>
+            <Form onSubmit={onSubmitHandler} role='form'>
                 <InputGroup><h3>Edit Post</h3></InputGroup>
-                <InputGroup><Label>Title</Label><Input value={post.title} onChange={onTitleChangeHandler} /></InputGroup>
-                <InputGroup><Label>Body</Label><Input value={post.body} onChange={onBodyhangeHandler} /></InputGroup>
+                <InputGroup><Label>Title</Label><Input data-testid='input-title' value={post.title} onChange={onTitleChangeHandler} /></InputGroup>
+                <InputGroup><Label>Body</Label><Input data-testid='input-body' value={post.body} onChange={onBodyhangeHandler} /></InputGroup>
                 <InputGroup><Button type="button" onClick={onCancelHandler}>Cancel</Button><Button>Save</Button></InputGroup>
             </Form>
         </Wrapper>

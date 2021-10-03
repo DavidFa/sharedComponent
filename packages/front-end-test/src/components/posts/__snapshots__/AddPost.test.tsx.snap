@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddPost Snapshot Test should render with given state 1`] = `
+<div
+  className="sc-bdfBQB eiRpoH"
+>
+  <form
+    className="sc-gsTEea bSRuSa"
+    onSubmit={[Function]}
+    role="form"
+  >
+    <div
+      className="sc-dlfnuX cmPjgH"
+    >
+      <h3>
+        Edit Post
+      </h3>
+    </div>
+    <div
+      className="sc-dlfnuX cmPjgH"
+    >
+      <label
+        className="sc-hKgJUU bYFslP"
+      >
+        Title
+      </label>
+      <input
+        className="sc-eCstlR hiWetG"
+        data-testid="input-title"
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <div
+      className="sc-dlfnuX cmPjgH"
+    >
+      <label
+        className="sc-hKgJUU bYFslP"
+      >
+        Body
+      </label>
+      <input
+        className="sc-eCstlR hiWetG"
+        data-testid="input-body"
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <div
+      className="sc-dlfnuX cmPjgH"
+    >
+      <button
+        className="sc-jSgvzq"
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </button>
+      <button
+        className="sc-jSgvzq"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+`;

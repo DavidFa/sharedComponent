@@ -71,10 +71,6 @@ describe('usePost', () => {
 
         expect(mockUseDispatch).toHaveBeenCalled();
         expect(mockUseDispatch).toHaveBeenCalledTimes(1);
-        // expect(await mockUseDispatch).toHaveBeenCalledWith({
-        //     "payload": 0,
-        //     "type": "Post/updateStatus",
-        // });
     })
 
     it('should not dispatch an action when onSubmitHandler', () => {
