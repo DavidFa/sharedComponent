@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PostStatus, PostType } from "../models/Types";;
 
 interface StateType {
@@ -69,23 +69,24 @@ const postSlice = createSlice({
     name: "Post",
     initialState,
     reducers: {
-        updateStatus: (state, { payload }) => {
-            state.status = payload;
+        updateStatus: (state: StateType, action: PayloadAction<PostStatus>) => {
+            state.status = action.payload;
         },
-        editTitle: (state, { payload }) => {
-            if (!state.post) return state;
-            state.post.title = payload;
+        editTitle: (state: StateType, action: PayloadAction<string>) => {
+            if (!state.post || !action.payload) return state;
+            state.post.title = action.payload;
         },
-        editBody: (state, { payload }) => {
-            if (!state.post) return state;
-            state.post.body = payload;
+        editBody: (state: StateType, action: PayloadAction<string>) => {
+            if (!state.post || !action.payload) return state;
+            state.post.body = action.payload;
         },
-        addComparedPost: (state, { payload }) => {
-            state.comparedPosts.push(payload);
+        addComparedPost: (state: StateType, action: PayloadAction<PostType>) => {
+            if (!action.payload) return state;
+            state.comparedPosts.push(action.payload);
         },
-        removeComparedPost: (state, { payload }) => {
-            if (!state.comparedPosts.length) return;
-            const comparedPosts = state.comparedPosts.filter(item => item.id !== payload);
+        removeComparedPost: (state: StateType, action: PayloadAction<number>) => {
+            if (!state.comparedPosts.length || !action.payload) return;
+            const comparedPosts = state.comparedPosts.filter(item => item.id !== action.payload);
             state.comparedPosts = comparedPosts;
         }
     },

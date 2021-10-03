@@ -10,7 +10,6 @@ text-align:center;
 const Posts: React.FC = () => {
     const { body, comparePosts } = usePosts();
 
-
     return (
         <Wrapper>
             {comparePosts}

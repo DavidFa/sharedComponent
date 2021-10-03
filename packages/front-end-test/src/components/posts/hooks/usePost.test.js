@@ -62,7 +62,7 @@ describe('usePost', () => {
         });
     })
 
-    it('should dispatch an action when onSubmitHandler', () => {
+    it('should dispatch an action when onSubmitHandler', async () => {
 
         const { result } = renderHook(() => usePost());
         act(() => {
@@ -71,7 +71,7 @@ describe('usePost', () => {
 
         expect(mockUseDispatch).toHaveBeenCalled();
         expect(mockUseDispatch).toHaveBeenCalledTimes(1);
-        // expect(mockUseDispatch).toHaveBeenCalledWith({
+        // expect(await mockUseDispatch).toHaveBeenCalledWith({
         //     "payload": 0,
         //     "type": "Post/updateStatus",
         // });
