@@ -13,7 +13,7 @@ exports[`AddPost Snapshot Test should render with given state 1`] = `
       className="sc-dlfnuX cmPjgH"
     >
       <h3>
-        Edit Post
+        Add Post
       </h3>
     </div>
     <div
@@ -28,6 +28,7 @@ exports[`AddPost Snapshot Test should render with given state 1`] = `
         className="sc-eCstlR hiWetG"
         data-testid="input-title"
         onChange={[Function]}
+        type="text"
         value=""
       />
     </div>
@@ -43,6 +44,7 @@ exports[`AddPost Snapshot Test should render with given state 1`] = `
         className="sc-eCstlR hiWetG"
         data-testid="input-body"
         onChange={[Function]}
+        type="text"
         value=""
       />
     </div>
@@ -50,14 +52,14 @@ exports[`AddPost Snapshot Test should render with given state 1`] = `
       className="sc-dlfnuX cmPjgH"
     >
       <button
-        className="sc-jSgvzq"
+        className="sc-jSgvzq jZKsKI"
         onClick={[Function]}
         type="button"
       >
         Cancel
       </button>
       <button
-        className="sc-jSgvzq"
+        className="sc-jSgvzq jZKsKI"
       >
         Save
       </button>

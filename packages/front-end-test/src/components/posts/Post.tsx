@@ -27,7 +27,9 @@ const Input = styled.input`
 width:300px;
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+padding: 3px 10px;
+`;
 
 const Post = () => {
 

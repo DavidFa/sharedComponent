@@ -27,7 +27,10 @@ const Input = styled.input`
 width:300px;
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+margin: 0 10px;
+padding: 3px 10px;
+`;
 
 const AddPost = () => {
     const { post, onTitleChangeHandler, onBodyhangeHandler, onSubmitHandler, onCancelHandler } = useAddPost();
@@ -35,9 +38,9 @@ const AddPost = () => {
     return (
         <Wrapper>
             <Form onSubmit={onSubmitHandler} role='form'>
-                <InputGroup><h3>Edit Post</h3></InputGroup>
-                <InputGroup><Label>Title</Label><Input data-testid='input-title' value={post.title} onChange={onTitleChangeHandler} /></InputGroup>
-                <InputGroup><Label>Body</Label><Input data-testid='input-body' value={post.body} onChange={onBodyhangeHandler} /></InputGroup>
+                <InputGroup><h3>Add Post</h3></InputGroup>
+                <InputGroup><Label>Title</Label><Input data-testid='input-title' type="text" value={post.title} onChange={onTitleChangeHandler} /></InputGroup>
+                <InputGroup><Label>Body</Label><Input data-testid='input-body' type="text" value={post.body} onChange={onBodyhangeHandler} /></InputGroup>
                 <InputGroup><Button type="button" onClick={onCancelHandler}>Cancel</Button><Button>Save</Button></InputGroup>
             </Form>
         </Wrapper>

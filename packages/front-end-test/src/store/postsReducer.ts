@@ -21,7 +21,7 @@ const initialState: StateType = {
 
 export const fetchPosts = createAsyncThunk<PostType, number>('posts/getPosts',
     async (limit: number, { rejectWithValue }) => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`);
         if (!response.ok) {
             // Return the known error for future handling
             return rejectWithValue({ errorMessage: "error" } as MyKnownError)
@@ -86,8 +86,7 @@ const postSlice = createSlice({
         },
         removeComparedPost: (state: StateType, action: PayloadAction<number>) => {
             if (!state.comparedPosts.length || !action.payload) return;
-            const comparedPosts = state.comparedPosts.filter(item => item.id !== action.payload);
-            state.comparedPosts = comparedPosts;
+            state.comparedPosts = state.comparedPosts.filter(item => item.id !== action.payload);
         }
     },
 

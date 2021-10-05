@@ -33,7 +33,7 @@ describe('AddPost', () => {
             // const jsdomAlert = window.alert;
             // window.alert = () => { };
             expect(screen.getByRole('form')).toBeInTheDocument();
-            expect(screen.queryByText(/Edit Post/i)).toBeInTheDocument();
+            expect(screen.queryByText(/Add Post/i)).toBeInTheDocument();
             expect(screen.queryByText(/Title/i)).toBeInTheDocument();
             expect(screen.queryByText(/Body/i)).toBeInTheDocument();
             expect(screen.queryByText(/Body/i)).toBeInTheDocument();

@@ -1,7 +1,7 @@
 import { PostStatus } from '../models/Types';
-import reducer, { actions } from './postsReducer';
+import reducer, { actions, editPost } from './postsReducer';
 
-describe('', () => {
+describe('postsReducer', () => {
     it('should return the initial state', () => {
         expect(reducer(undefined, { type: "" })).toEqual({
             status: PostStatus.list,
@@ -85,4 +85,21 @@ describe('', () => {
             comparedPosts: [{ id: 1, title: "title", body: "body" }, { id: 3, title: "title3", body: "body3" }]
         })
     })
+
+    it('sets fetching false when fetchList is rejected', () => {
+        const previousState = {
+            status: PostStatus.list,
+            posts: [],
+            post: { id: 0, title: "title", body: "body" },
+            comparedPosts: []
+        }
+        const action = { type: editPost.fulfilled.type };
+        const state = reducer(previousState, action);
+        expect(state).toEqual({
+            status: PostStatus.list,
+            posts: [],
+            post: { id: 0, title: "", body: "" },
+            comparedPosts: []
+        });
+      });
 })
