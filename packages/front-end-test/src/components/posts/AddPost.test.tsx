@@ -28,7 +28,7 @@ describe('AddPost', () => {
     describe('', () => {
         it('should dispatch an action when click save button', () => {
             const useStateMock = (initState: { title: string, body: string }) => [initState = { title: "title", body: "body" }, setState];
-            jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+            jest.spyOn(React, 'useState').mockImplementation(() => [{ title: "title", body: "body" }, setState]);
             render(<AddPost />)
             // const jsdomAlert = window.alert;
             // window.alert = () => { };
@@ -58,7 +58,7 @@ describe('AddPost', () => {
 
     it('should not dispatch an action when click save button', () => {
         const useStateMock = (initState: { title: string, body: string }) => [initState = { title: "", body: "" }, setState];
-        jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+        jest.spyOn(React, 'useState').mockImplementation(() => [{ title: "", body: "" }, setState]);
         render(<AddPost />)
         const jsdomAlert = window.alert;
         window.alert = () => { };

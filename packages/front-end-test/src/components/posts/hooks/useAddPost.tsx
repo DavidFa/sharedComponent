@@ -3,6 +3,8 @@ import { useAppDispatch } from '../../../hooks/hooks';
 import { PostStatus } from '../../../models/Types';
 import { actions, addPost } from '../../../store/postsReducer';
 
+type field = "title" | "body";
+
 const useAddPost = () => {
     const [post, setPost] = useState<{ title: string, body: string }>({ title: "", body: "" });
     const dispatch = useAppDispatch();
@@ -10,6 +12,7 @@ const useAddPost = () => {
     const onTitleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newPost = { ...post };
         newPost.title = event.target.value;
+        newPost[event.target.name as field] = event.target.value;
         setPost(newPost);
     }
 

@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PostApi } from "../api/helper";
 import { PostStatus, PostType } from "../models/Types";;
 
 interface StateType {
@@ -36,7 +37,7 @@ export const fetchPost = createAsyncThunk<PostType, number>('posts/getPost',
             // Return the known error for future handling
             return rejectWithValue({ errorMessage: "error" } as MyKnownError)
         }
-        const data = (await response.json()) as PostType;
+        const data: PostType = (await response.json());
         dispatch(actions.updateStatus(PostStatus.edit));
         return data;
     })
@@ -55,15 +56,46 @@ export const editPost = createAsyncThunk<PostType, PostType>('posts/editPost',
 
 export const addPost = createAsyncThunk<PostType, { title: string, body: string }>('posts/addPost',
     async (post: { title: string, body: string }, { dispatch, rejectWithValue }) => {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts`, { method: "POST", body: JSON.stringify(post) });
-        if (!response.ok) {
-            // Return the known error for future handling
-            return rejectWithValue({ errorMessage: "error" } as MyKnownError)
+        // const response = await fetch(`https://jsonplaceholder.typicode.com/posts`, { method: "POST", body: JSON.stringify(post) });
+        try {
+            const data = await PostApi<{ title: string, body: string }, PostType>("/posts", post);
+            // if (!response.ok) {
+            //     // Return the known error for future handling
+            //     return rejectWithValue({ errorMessage: "error" } as MyKnownError)
+            // }
+            // const data = (await response.json()) as PostType;
+            dispatch(actions.updateStatus(PostStatus.list));
+            return data;
+        } catch (e) {
+            const err = e as Error;
+            return rejectWithValue({ errorMessage: err.message } as MyKnownError)
         }
-        const data = (await response.json()) as PostType;
-        dispatch(actions.updateStatus(PostStatus.list));
-        return data;
     })
+
+interface ApiError {
+    code: number;
+    error: string;
+}
+
+// const isApiError = (x: any): x is ApiError => {
+//     return typeof x.code === 'number';
+// };
+
+
+// const Test = async <T>(value: T): Promise<Response> => {
+//     try {
+//         const a = await fetch('');
+
+//         return Promise.resolve(a);
+//     } catch (e) {
+//         if (isApiError(e)) {
+
+//         }
+//         throw e;
+//     }
+
+// };
+
 
 const postSlice = createSlice({
     name: "Post",

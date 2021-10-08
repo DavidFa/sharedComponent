@@ -6,6 +6,20 @@ import { ActionType } from '../../models/Types';
 
 describe('useLeftPanel', () => {
 
+    // const event = {
+    //     target: {
+    //         value: 'test desc',
+    //     }
+    // } as React.ChangeEvent<HTMLInputElement>;
+
+    const getEvent = (value: string) => {
+        return {
+            target: {
+                value: value,
+            }
+        } as React.ChangeEvent<HTMLInputElement>;
+    }
+
     const mockUseDispatch = jest.fn();
     beforeEach(() => {
         jest.spyOn(ReactRedux, 'useDispatch').mockReturnValue(mockUseDispatch);
@@ -72,7 +86,7 @@ describe('useLeftPanel', () => {
         const { result } = renderHook(() => useLeftPanel());
 
         act(() => {
-            result.current.onChangeFieldHandler("Name", { target: { value: "test name" } });
+            result.current.onChangeFieldHandler("Name", getEvent("test name"));
         })
 
         expect(mockUseDispatch).toBeCalled();
@@ -80,11 +94,13 @@ describe('useLeftPanel', () => {
         expect(mockUseDispatch).toBeCalledWith({ "payload": { "field": "test name", local: "en-AU" }, "type": ActionType.updateName });
     })
 
+
+
     it('should dispatch an action to update description when onChangeFieldHandler is fired', () => {
         const { result } = renderHook(() => useLeftPanel());
 
         act(() => {
-            result.current.onChangeFieldHandler("Description", { target: { value: "test desc" } });
+            result.current.onChangeFieldHandler("Description", getEvent("test desc"));
         })
 
         expect(mockUseDispatch).toBeCalled();
