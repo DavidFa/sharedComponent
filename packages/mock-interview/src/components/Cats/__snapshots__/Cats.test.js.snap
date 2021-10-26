@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test useCats hook should render cats with given state 1`] = `
+<div>
+  <div
+    class="Cats"
+    data-testid="wrapper"
+  >
+    <div>
+      <span>
+        1
+      </span>
+      <span
+        style="color: red;"
+      >
+        white
+      </span>
+      <span>
+        1
+      </span>
+    </div>
+    <div>
+      <span>
+        2
+      </span>
+      <span
+        style="color: red;"
+      >
+        block
+      </span>
+      <span>
+        2
+      </span>
+    </div>
+    <div>
+      <span>
+        3
+      </span>
+      <span
+        style="color: red;"
+      >
+        white
+      </span>
+      <span>
+        3
+      </span>
+    </div>
+  </div>
+</div>
+`;

@@ -67,7 +67,7 @@ const usePosts = () => {
         switch (status) {
             case PostStatus.list: {
                 return (<div>
-                    <Button onClick={onAddPostHandler}>Add Post</Button>
+                    <Button onClick={onAddPostHandler} id="addPost">Add Post</Button>
                     <Table headers={headers} data={posts} rowClickHandler={rowClickHandler} onSelectedHandler={onSelectedHandler} />
                 </div>);
             }

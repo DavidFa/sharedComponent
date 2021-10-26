@@ -72,10 +72,10 @@ export const addPost = createAsyncThunk<PostType, { title: string, body: string 
         }
     })
 
-interface ApiError {
-    code: number;
-    error: string;
-}
+// interface ApiError {
+//     code: number;
+//     error: string;
+// }
 
 // const isApiError = (x: any): x is ApiError => {
 //     return typeof x.code === 'number';

@@ -105,8 +105,8 @@ npx lerna bootstrap --hoist
 # Run lerna
 lerna run start
 
-
-
+# Install reduxjs/toolkit react-redux
+npm install @reduxjs/toolkit react-redux
 
 # Install Styled Component
 npm install --save styled-components
@@ -131,3 +131,8 @@ npm install --save-dev react-test-renderer
 # Install redux-mock-store to test React-Redux connected Components
 npm install --save-dev redux-mock-store 
 npm install --save-dev @types/redux-mock-store
+
+
+
+# Install cypress
+npm install cypress --save-dev

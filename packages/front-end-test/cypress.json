@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "experimentalStudio": true,
+    "env": {
+        "post-title": "This is my testing title",
+        "post-body": "This is my testing body"
+    }
+}

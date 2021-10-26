@@ -1,13 +1,13 @@
 export const HOST_URL = "https://jsonplaceholder.typicode.com12222";
 
-interface ApiError {
-    code: number;
-    error: string;
-}
+// interface ApiError {
+//     code: number;
+//     error: string;
+// }
 
-const isApiError = (x: any): x is ApiError => {
-    return typeof x.code === 'number';
-};
+// const isApiError = (x: any): x is ApiError => {
+//     return typeof x.code === 'number';
+// };
 
 // generator function sync supar
 export const PostApi = async <T, R>(url: string, post: T): Promise<R> => {

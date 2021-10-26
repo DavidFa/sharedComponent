@@ -27,7 +27,7 @@ const ComparedPosts = () => {
     const width = comparedPosts.length * 400;
 
     return (
-        <Wrapper width={width}>
+        <Wrapper width={width} id="comparedPosts">
             <h3>Posts Comparation</h3>
             <WrapperComparedPost>
                 {comparedPosts.length > 1 && comparedPosts.map(item => <ComparedPost key={item.id} post={item} />)}

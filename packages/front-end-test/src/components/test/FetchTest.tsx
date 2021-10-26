@@ -6,7 +6,7 @@ const FetchTest: React.FC<{ postId: number }> = ({ postId }) => {
 
     const fetchPost = useCallback(
          async () => {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/posts1/${postId}`, { method: "GET" });console.log('resolved', response);
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, { method: "GET" });console.log('resolved', response);
             if (response.ok) {
                 const data = await response.json();
                 setPost(data);

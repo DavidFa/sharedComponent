@@ -36,7 +36,7 @@ const AddPost = () => {
     const { post, onTitleChangeHandler, onBodyhangeHandler, onSubmitHandler, onCancelHandler } = useAddPost();
 
     return (
-        <Wrapper>
+        <Wrapper id="addPostWrapper">
             <Form onSubmit={onSubmitHandler} role='form'>
                 <InputGroup><h3>Add Post</h3></InputGroup>
                 <InputGroup><Label>Title</Label><Input data-testid='input-title' type="text" value={post.title} onChange={onTitleChangeHandler} /></InputGroup>

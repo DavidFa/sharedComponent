@@ -31,7 +31,7 @@ type ComparedPostProps = {
 
 const ComparedPost: React.FC<ComparedPostProps> = ({ post }) => {
     return (
-        <Wrapper>
+        <Wrapper data-name="comparedPost">
             <InputGroup><Label>Title</Label><Input value={post.title} disabled={true} /></InputGroup>
             <InputGroup><Label>Body</Label><Input value={post.body} disabled={true} /></InputGroup>
         </Wrapper>
