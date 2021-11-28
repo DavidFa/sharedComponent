@@ -1,6 +1,20 @@
 const testTitle = Cypress.env("post-title");
 const testBody = Cypress.env("post-body");
 
+// Mock data
+// cy.intercept(url)
+// cy.intercept(method, url)
+// cy.intercept(routeMatcher)
+
+const testTitle = (cy, testTitle)=>{
+    test1(cy, '[data-testid=input-title]', testTitle);
+}
+
+// custom command
+const test1 = (cy, selector, value) =>{
+    cy.get(selector).clear();
+    cy.get(selector).type(value);
+}
 describe('renders the home page', () => {
     beforeEach(() => {
         cy.visit("/");
@@ -21,6 +35,7 @@ describe('renders the home page', () => {
         /* ==== Generated with Cypress Studio ==== */
         cy.get('[data-testid=input-title]').clear();
         cy.get('[data-testid=input-title]').type(testTitle);
+        test(cy);
         cy.get('[data-testid=input-body]').clear();
         cy.get('[data-testid=input-body]').type(testBody);
         cy.get('[type="button"]').click();
