@@ -1,15 +1,22 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
+  mode: 'development',
+  entry: path.join(__dirname, 'src', 'index.tsx'),
   devtool: 'inline-source-map',
-  entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     filename: 'bundle.js',
+    clean: true,
   },
   devServer: {
-    static: './build',
+    static: path.join(__dirname, "build"),
+    compress: true,
+    port: 4000,
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
@@ -17,6 +24,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'], // include eslint-loader
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
