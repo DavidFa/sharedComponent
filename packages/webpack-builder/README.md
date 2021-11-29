@@ -240,7 +240,7 @@ module: {
 },
 ```
 
-### 10. Typescript
+### 10. Typescript [Creating React and TypeScript apps with Webpack](https://www.carlrippon.com/creating-react-and-typescript-apps-with-webpack/)
 - npm install --save-dev typescript ts-loader
 - npm install --save-dev @types/react @types/react-dom
 #### 10.1 Configuring Babel
