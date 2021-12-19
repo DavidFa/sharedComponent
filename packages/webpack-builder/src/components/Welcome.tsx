@@ -8,7 +8,7 @@ const Welcome: React.FC<WelcomeType> = ({ user, age: defaultAge = 30 }) => {
 
   useEffect(() => {
     setPerson({ user, age: defaultAge });
-  });
+  }, []);
 
   return (
     <h1>

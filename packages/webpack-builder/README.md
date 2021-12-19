@@ -240,6 +240,10 @@ module: {
 },
 ```
 
+
+### 9.1 Add Sass
+- npm i -D sass sass-loader
+
 ### 10. Typescript [Creating React and TypeScript apps with Webpack](https://www.carlrippon.com/creating-react-and-typescript-apps-with-webpack/)
 - npm install --save-dev typescript ts-loader
 - npm install --save-dev @types/react @types/react-dom
@@ -283,4 +287,12 @@ module: {
 }
 ```
 
+
+#### 21 Host in Firebase [Firebase CLI reference](https://firebase.google.com/docs/cli?authuser=0#mac-linux-npm)
+- Install the Firebase CLI via npm by running the following command:
+  npm install -g firebase-tools
+- Log in and test the Firebase CLI
+  firebase login
+  firebase init
+  firebase deploy
 
